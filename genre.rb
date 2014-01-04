@@ -1,0 +1,26 @@
+# encoding: utf-8
+require 'taglib'
+
+# Dir.chdir("/Volumes/phil/audiobooks/Bible")
+Dir["*.mp3"].each do |chapter|
+    # print chapter, "\t"
+    # if chapter != "rus_48_4.mp3" # && chapter =~ /rus_10_/)
+    	print chapter, "\t"
+		TagLib::MPEG::File.open(chapter) do |file|
+
+		tag = file.id3v2_tag
+        # puts tag.title
+		# genre = tag.frame_list #('TIT2').first
+		# title.text = "Вторая книга Царств"
+		# title.text = "Вторая книга Царств" + title.to_s
+		# title = title.to_s.sub(/,\s/, ", глава ") # { |match|  }
+		
+		print tag.genre.to_s "\t"
+
+		# puts tag.genre
+		# artist = tag.frame_list('TPE1').first
+		# puts artist # artist.text = "Библия"
+		# file.save
+		end
+    # end
+end
