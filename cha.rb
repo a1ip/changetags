@@ -7,7 +7,7 @@ Dir["*.mp3"].each do |chapter|
 	TagLib::MPEG::File.open(chapter) do |file|
 		tag = file.id3v2_tag
 		title = tag.frame_list('TIT2').first
-		title.text = title.to_s.gsub! ", ", ", глава "
+		title.text = title.to_s.sub ", ", ", глава "
 		puts title, "\t"
 		file.save
 	end
